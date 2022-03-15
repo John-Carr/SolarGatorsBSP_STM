@@ -12,8 +12,11 @@ namespace Drivers {
 
 LTC2630::LTC2630(SPI_HandleTypeDef* hspi, GPIO_TypeDef* cs_port, uint16_t cs_pin, OperatingMode mode):
     hspi_(hspi), cs_port_(cs_port), cs_pin_(cs_pin), mode_(mode), current_val_(0)
+{ }
+
+void LTC2630::Init()
 {
-//  WriteAndUpdate(0x00);
+  WriteAndUpdate(0x00);
 }
 
 LTC2630::~LTC2630()

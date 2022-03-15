@@ -40,6 +40,7 @@ class LTC2630 {
 public:
 
   LTC2630(SPI_HandleTypeDef* hspi, GPIO_TypeDef* cs_port, uint16_t cs_pin, OperatingMode mode);
+  void Init();
   virtual ~LTC2630();
   void WriteData(uint16_t data);
   void UpdateOutput();
