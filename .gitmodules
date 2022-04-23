@@ -1,3 +1,6 @@
 [submodule "etl"]
 	path = etl
 	url = https://github.com/ETLCPP/etl.git
+[submodule "CAN-Decoder"]
+	path = CAN-Decoder
+	url = https://github.com/Solar-Gators/CAN-Decoder
