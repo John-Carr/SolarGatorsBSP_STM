@@ -22,6 +22,8 @@ PitComms::~PitComms()
 
 void PitComms::SendDataModule(SolarGators::DataModules::DataModule& data_module)
 {
+  //add mutex to prevent overwriting datamodule byte arrays mid transmission
+  osMutexAcquire(data_module.mutex_id_, osWaitForever);
   // Start Condition
   radio_->SendByte(START_CHAR);
   // Only Sending one Datamodule
@@ -41,6 +43,7 @@ void PitComms::SendDataModule(SolarGators::DataModules::DataModule& data_module)
   }
   // End condition
   radio_->SendByte(END_CHAR);
+  osMutexRelease(data_module.mutex_id_);
 }
 
 inline uint8_t PitComms::EscapeData(uint8_t data)
